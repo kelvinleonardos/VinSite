@@ -2,12 +2,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import os
+from dotenv import load_dotenv
 
-DATABASE_USER = os.getenv('DATABASE_USER', 'root')
-DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD', '')
-DATABASE_HOST = os.getenv('DATABASE_HOST', 'localhost')
-DATABASE_PORT = os.getenv('DATABASE_PORT', '3307')
-DATABASE_NAME = os.getenv('DATABASE_NAME', 'db_vinsite')
+load_dotenv(os.path.join(os.path.dirname(__file__), '../.env'))
+
+DATABASE_USER = os.getenv('DATABASE_USER')
+DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
+DATABASE_HOST = os.getenv('DATABASE_HOST')
+DATABASE_PORT = os.getenv('DATABASE_PORT')
+DATABASE_NAME = os.getenv('DATABASE_NAME')
 
 
 def create_engine_with_fallback():
